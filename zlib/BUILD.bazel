@@ -1,0 +1,29 @@
+# vim:set ft=bzl:
+# Copyright © 2018 Donald King
+# Licensed under the terms of the LICENSE file in this repository.
+
+licenses(["notice"])  # MIT
+
+exports_files(glob(["*"]))
+
+alias(
+    name = "zlib",
+    actual = "@net_zlib//:z",
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "zlib_static_test",
+    srcs = ["zlib_test.c"],
+    deps = [":zlib"],
+    copts = ["-std=c11"],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "zlib_shared_test",
+    srcs = ["zlib_test.c"],
+    deps = [":zlib"],
+    copts = ["-std=c11"],
+    linkstatic = False,
+)

@@ -1,0 +1,7 @@
+# vim:set ft=bzl:
+# Copyright © 2018 Donald King
+# Licensed under the terms of the LICENSE file in this repository.
+
+licenses(["notice"])  # MIT
+
+exports_files(glob(["*.bzl"]))
